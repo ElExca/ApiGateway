@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es6",                        // Especifica la versión ECMAScript de salida.
+      "module": "commonjs",                   // Especifica el módulo de generación de código.
+      "outDir": "./dist",                     // Redirige la salida de los archivos compilados.
+      "rootDir": "./src",                     // Especifica la carpeta raíz de los archivos fuente.
+      "strict": true,                         // Habilita todas las opciones estrictas.
+      "esModuleInterop": true,                // Permite la interoperabilidad de exportación/importación de ES6.
+      "skipLibCheck": true,                   // Omite la comprobación de tipos en las declaraciones de archivos.
+      "forceConsistentCasingInFileNames": true // Asegura que la capitalización sea consistente en las referencias a archivos.
+    },
+    "include": [
+      "src/**/*" // Incluye todos los archivos dentro de la carpeta 'src'.
+    ],
+    "exclude": [
+      "node_modules", // Excluye la carpeta 'node_modules' para mejorar el rendimiento de TypeScript.
+      "**/*.spec.ts"  // Excluye archivos de prueba.
+    ]
+  }
+  
