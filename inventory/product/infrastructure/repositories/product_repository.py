@@ -37,3 +37,14 @@ class MongoDBProductRepository:
         result = self.product_collection.delete_one({"_id": ObjectId(product_id)})
         if result.deleted_count == 0:
             raise ValueError("Producto no encontrado")
+        
+    def decrease_stock(self, product_id, quantity):
+        product = self.product_collection.find_one({'_id': ObjectId(product_id)})
+        if product:
+            new_stock = product['stock'] - quantity
+            if new_stock < 0:
+                new_stock = 0
+            self.product_collection.update_one(
+                {'_id': ObjectId(product_id)},
+                {'$set': {'stock': new_stock}}
+            )

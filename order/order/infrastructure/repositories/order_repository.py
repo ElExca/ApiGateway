@@ -40,3 +40,14 @@ class MongoDBOrderRepository:
         if result.modified_count == 0:
             raise ValueError("El estatus no fue actualizado")
         return True
+
+    def get_order_by_id(self, order_id):
+        order = self.order_collection.find_one({'_id': ObjectId(order_id)})
+        if not order:
+            raise ValueError("Orden no encontrada")
+        # Suponiendo que 'order_products' es parte del modelo de datos de la orden
+        order_details = {
+            'order_id': str(order['_id']),
+            'order_products': order['order_products']
+        }
+        return order_details
